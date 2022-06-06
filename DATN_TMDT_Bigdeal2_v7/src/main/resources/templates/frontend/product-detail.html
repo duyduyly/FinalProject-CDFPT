@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/html/product-page(left-sidebar).html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Jan 2021 04:48:12 GMT -->
+
+<head>
+<title>Bigdeal - Multi-purpopse E-commerce Html Template</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="big-deal">
+<meta name="keywords" content="big-deal">
+<meta name="author" content="big-deal">
+
+<link rel="icon"
+	href="https://themes.pixelstrap.com/bigdeal/assets/images/favicon/favicon.ico"
+	type="image/x-icon">
+<link rel="shortcut icon"
+	href="https://themes.pixelstrap.com/bigdeal/assets/images/favicon/favicon.ico"
+	type="image/x-icon">
+
+<!--Google font-->
+<link
+	href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Raleway&amp;display=swap"
+	rel="stylesheet">
+
+<!--icon css-->
+<script src="https://use.fontawesome.com/d5f66e0a77.js"></script>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/frontend/css/themify.css}">
+
+<!--Slick slider css-->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/frontend/css/slick.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/frontend/css/slick-theme.css}">
+
+<!--Animate css-->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/frontend/css/animate.css}">
+<!-- Bootstrap css -->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/frontend/css/bootstrap.css}">
+
+<!-- Theme css -->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/frontend/css/color2.css}" media="screen" id="color">
+<style>
+.kiki {
+	display: flex;
+	justify-content: center;
+}
+
+.checked {
+	color: orange;
+}
+
+.starrating>input {
+	display: none;
+}
+/* Remove radio buttons */
+.starrating>label:before {
+	content: "\f005";
+	/* Star */
+	margin: 2px;
+	font-size: 4em;
+	font-family: FontAwesome;
+	display: inline-block;
+}
+
+.starrating>label {
+	color: #222222;
+	/* Start color when not clicked */
+}
+
+.starrating>input:checked ~label {
+	color: #ffca08;
+}
+/* Set yellow color when star checked */
+.starrating>input:hover ~label {
+	color: #ffca08;
+}
+/* Set yellow color when star hover */
+</style>
+</head>
+
+<body class="bg-light">
+
+	<!-- loader start -->
+	<div class="loader-wrapper">
+		<div>
+			<img th:src="@{/frontend/images/loader.gif}" alt="loader">
+		</div>
+	</div>
+	<!-- loader end -->
+
+	<!--header start-->
+	<th:block th:include="/frontend/fragments/_header">
+
+	</th:block>
+	<!--header end-->
+
+	<!-- breadcrumb start -->
+	<div class="breadcrumb-main ">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="breadcrumb-contain">
+						<div>
+							<h2>Sản PHẩm</h2>
+							<ul>
+								<li><a href="/">Trang Chủ</a></li>
+								<li><i class="fa fa-angle-double-right"></i></li>
+								<li><a href="#">Sản Phẩm</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- breadcrumb End -->
+
+	<!-- section start -->
+	<section class="section-big-pt-space bg-light">
+		<div class="collection-wrapper">
+			<div class="custom-container">
+				<div class="row">
+					<div class="col-sm-3 collection-filter">
+						<div class="collection-filter-block creative-card creative-inner">
+							<div class="collection-mobile-back">
+								<span class="filter-back"> <i class="fa fa-angle-left"
+									aria-hidden="true"></i> back
+								</span>
+							</div>
+							<div class="collection-collapse-block border-0 open">
+								<h3 class="collapse-block-title">Thể Loại</h3>
+								<div class="collection-collapse-block-content">
+									<div class="collection-brand-filter">
+										<ul class="category-list">
+											<li th:each="category : ${categories}"><a
+												th:href="@{/product-list?categoryId={code}(code=${category.id})}"
+												th:utext="${category.categoryName}">clothing</a></li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- side-bar single product slider start -->
+
+						<div class="theme-card creative-card creative-inner">
+							<h5 class="title-border">Các sản phẩm mới</h5>
+							<div class="offer-slider slide-1">
+								<div>
+									<div class="media" th:each="productsnew :${top3_product_news}">
+										<a href="#"><img class="img-fluid "
+											th:src="@{|/productImage?code=${productsnew.code}|}" alt=""></a>
+										<div class="media-body align-self-center">
+											
+											<a href="product-page(no-sidebar).html">
+												<h6 th:utext="${productsnew.name}">Slim Fit Cotton
+													Shirt</h6>
+											</a>
+											<h4 th:utext="${productsnew.price}">$500.00</h4>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<!-- side-bar single product slider end -->
+					</div>
+					<div class="col-lg-9 col-sm-12 col-xs-12">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-xl-12">
+									<div class="filter-main-btn mb-2">
+										<span class="filter-btn"><i class="fa fa-filter"
+											aria-hidden="true"></i> filter</span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-5">
+									<div class="product-slick ">
+										<div>
+											<img th:src="@{|/productImage?code=${product.code}|}" alt=""
+												class="img-fluid  image_zoom_cls-0">
+										</div>
+										<div>
+											<img th:src="@{|/productImage2?code=${product.code}|}" alt=""
+												class="img-fluid  image_zoom_cls-1">
+										</div>
+										<div>
+											<img th:src="@{|/productImage3?code=${product.code}|}" alt=""
+												class="img-fluid  image_zoom_cls-2">
+										</div>
+										<div>
+											<img th:src="@{|/productImage4?code=${product.code}|}" alt=""
+												class="img-fluid  image_zoom_cls-3">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12 p-0">
+											<div class="slider-nav">
+												<div>
+													<img th:src="@{|/productImage?code=${product.code}|}"
+														alt="" class="img-fluid  image_zoom_cls-0">
+												</div>
+												<div>
+													<img th:src="@{|/productImage2?code=${product.code}|}"
+														alt="" class="img-fluid  image_zoom_cls-1">
+												</div>
+												<div>
+													<img th:src="@{|/productImage3?code=${product.code}|}"
+														alt="" class="img-fluid  image_zoom_cls-2">
+												</div>
+												<div>
+													<img th:src="@{|/productImage4?code=${product.code}|}"
+														alt="" class="img-fluid  image_zoom_cls-3">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-7 rtl-text">
+									<div class="product-right">
+										<h2 th:utext="${product.name}"></h2>
+										
+										<p></p>
+										<!--  <h3 style="color: red;"><del>$459.00</del><span>&nbsp;55% off</span></h3> -->
+										<!-- Giá có discount-->
+										<div lass="price" th:if="${product.discount} > 0">
+
+
+											<h3 style="color: red;">
+												<i th:utext="${product.price}*(1-(${product.discount}/100))"></i>&nbsp;
+												VNĐ &nbsp;&nbsp;
+												<del>
+													<i th:utext="${product.price}"></i>VNĐ
+												</del>
+											</h3>
+										</div>
+
+										<!-- không có có discount  -->
+										<div lass="price" th:if="${product.discount} == 0">
+
+
+											<h3 style="color: red;" th:utext="${product.price}"></h3>
+											<h3>&nbsp; VNĐ</h3>
+										</div>
+
+
+
+										<div class="product-buttons">
+											<a th:onclick="@{|addCart('${product.code}')|}"
+												data-toggle="modal" data-target="#addtocart"
+												class="btn btn-normal">Thêm giỏ Hàng</a> <a
+												th:href="@{|/user/buyProduct?code=${product.code}|}"
+												class="btn btn-normal">Mua Ngay</a>
+										</div>
+										<div class="border-product">
+											<h6 class="product-title">Mô Tả Ngắn</h6>
+											<p th:utext="${product.sort_discription}"></p>
+										</div>
+										<div class="border-product">
+											<div class="product-icon">
+												
+												<form class="d-inline-block">
+													<button class="wishlist-btn">
+														<i class="fa fa-heart"></i><span
+															th:onclick="@{|addWish('${product.code}')|}"
+															class="title-font">Add To WishList</span>
+													</button>
+												</form>
+											</div>
+										</div>
+										<div class="border-product pb-0">
+											<h6 class="product-title">Thời Gian</h6>
+											<div class="timer">
+												<p id="demo">
+
+													<span id="gio">22 <span class="padding-l">:</span> <span
+														class="timer-cal">Hrs</span>
+													</span> <span id="phut">13 <span class="padding-l">:</span>
+														<span class="timer-cal">Min</span>
+													</span> <span id="giay">57 <span class="timer-cal">Sec</span></span>
+												</p>
+											</div>
+
+											<script>
+												function Dong_ho() {
+													var gio = document
+															.getElementById("gio");
+													var phut = document
+															.getElementById("phut");
+													var giay = document
+															.getElementById("giay");
+													var Gio_hien_tai = new Date()
+															.getHours();
+													var Phut_hien_tai = new Date()
+															.getMinutes();
+													var Giay_hien_tai = new Date()
+															.getSeconds();
+													gio.innerHTML = Gio_hien_tai;
+													phut.innerHTML = Phut_hien_tai;
+													giay.innerHTML = Giay_hien_tai;
+												}
+												var Dem_gio = setInterval(
+														Dong_ho, 1000);
+											</script>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<section class="tab-product tab-exes creative-card creative-inner">
+							<div class="custom-container">
+								<div class="row">
+									<div class="col-sm-12 col-lg-12 ">
+										<div class=" creative-card creative-inner">
+											<ul class="nav nav-tabs nav-material" id="top-tab"
+												role="tablist">
+												<li class="nav-item"><a class="nav-link active"
+													id="top-home-tab" data-toggle="tab" href="#top-home"
+													role="tab" aria-selected="true">Mô Tả Sản Phẩm</a>
+													<div class="material-border"></div></li>
+
+												<li class="nav-item"><a class="nav-link"
+													id="review-top-tab" data-toggle="tab" href="#top-review"
+													role="tab" aria-selected="false">Đánh Giá Sản Phẩm</a>
+													<div class="material-border"></div></li>
+											</ul>
+											<div class="tab-content nav-material" id="top-tabContent">
+												<div class="tab-pane fade show active" id="top-home"
+													role="tabpanel" aria-labelledby="top-home-tab">
+													<p th:utext="${product.discription}"></p>
+
+												</div>
+
+
+												<div class="tab-pane fade" id="top-review" role="tabpanel"
+													aria-labelledby="review-top-tab">
+													<form class="theme-form" th:object="${productRatingForm}"
+														method="post" th:action="@{/user/rating}">
+														<div class="form-row">
+															<div class="col-md-12">
+																<div class="media">
+																	<label>Rating</label>
+																	<div class="media-body ml-3">
+																		<div>
+																			<i th:each="i: ${#numbers.sequence(1, star)}"
+																				class="fa fa-star checked"></i>
+
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-12"
+																th:each="productRating : ${ratingMessage}">
+																<p>
+																	<label for="review"
+																		th:utext="${productRating.userName}"></label> ( <i
+																		th:each="i: ${#numbers.sequence(1, productRating.rating)}"
+																		class="fa fa-star"></i>)
+																</p>
+
+
+																<p th:utext="${productRating.message}"
+																	style="font-weight: bold"></p>
+
+															</div>
+
+															<div class="col-md-12">
+																<input type="hidden" th:field="*{productCode}" /> <label
+																	for="review">Nội Dung Đánh Giá</label>
+																<textarea class="form-control" th:field="*{message}"
+																	placeholder="Wrire Your Testimonial Here"
+																	id="exampleFormControlTextarea1" rows="6"></textarea>
+															</div>
+															<div class="col-md-12">
+																<label for="review">Chọn Sao</label>
+																<div
+																	class="starrating risingstar d-flex justify-content-center flex-row-reverse">
+																	<input type="radio" id="star5" name="rating" value="5" />
+																	<label for="star5" title="5 star">5</label> <input
+																		type="radio" id="star4" name="rating" value="4" /> <label
+																		for="star4" title="4 star">4</label> <input
+																		type="radio" id="star3" name="rating" value="3" /> <label
+																		for="star3" title="3 star">3</label> <input
+																		type="radio" id="star2" name="rating" value="2" /> <label
+																		for="star2" title="2 star">2</label> <input
+																		type="radio" id="star1" name="rating" value="1" /> <label
+																		for="star1" title="1 star">1</label>
+																</div>
+															</div>
+															<div class="col-md-12">
+																<button class="btn btn-normal" type="submit">Gửi</button>
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+
+					</div>
+	</section>
+
+	<!-- Section ends -->
+
+	<!-- related products -->
+	<section class="section-big-py-space  ratio_asos bg-light">
+		<div class="custom-container">
+			<div class="row">
+				<div class="col-12 product-related">
+					<h2>Các Sản Phẩm Liên Quan</h2>
+				</div>
+			</div>
+			<div class="row ">
+				<div class="col-12 product">
+					<div class="product-slide no-arrow">
+						<div th:each="product : ${products}">
+							<div class="product-box">
+								<div class="product-imgbox">
+									<div class="product-front">
+										<img th:src="@{|/productImage?code=${product.code}|}"
+											class="img-fluid  " alt="product">
+									</div>
+									<div class="product-back">
+										<img th:src="@{|/productImage?code=${product.code}|}"
+											class="img-fluid  " alt="product">
+									</div>
+								</div>
+								<div class="product-detail detail-center ">
+									<div class="detail-title">
+										<div class="detail-left">
+											
+											<a href="#">
+												<h6 class="price-title" th:utext="${product.name}">
+													reader will be distracted.</h6>
+											</a>
+										</div>
+										<div class="detail-right" th:if="${product.discount != 0}">
+											<div class="check-price"
+												th:utext="${#strings.toString(product.price) + ' VNĐ'}">
+
+											</div>
+											<div class="price">
+												<div class="price"
+													th:utext="${(product.price - (product.price*product.discount)/100) + ' VNĐ'}">
+
+												</div>
+											</div>
+										</div>
+										<div class="detail-right" th:if="${product.discount == 0}">
+											<div class="price" th:utext="${product.price + ' VNĐ'}">
+
+											</div>
+
+										</div>
+									</div>
+									<div class="icon-detail">
+										<button data-toggle="modal" data-target="#addtocart"
+											title="Add to cart">
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+										<a href="javascript:void(0)" title="Add to Wishlist"> <i
+											class="fa fa-heart" aria-hidden="true"></i>
+										</a> <a th:href="@{|/product-detail?code=${product.code}|}"
+											title="Quick View"> <i class="fa fa-search"
+											aria-hidden="true"></i>
+										</a> <a href="compare.html" title="Compare"> <i
+											class="fa fa-exchange" aria-hidden="true"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- related products -->
+
+	<!--footer start-->
+	<th:block th:include="/frontend/fragments/_footer">
+
+	</th:block>
+	<!--footer end-->
+
+	<!-- tap to top -->
+	<div class="tap-top">
+		<div>
+			<i class="fa fa-angle-double-up"></i>
+		</div>
+	</div>
+	<!-- tap to top End -->
+
+	<!-- Add to cart bar -->
+	<div id="cart_side" class=" add_to_cart left">
+		<a href="javascript:void(0)" class="overlay" onclick="closeCart()"></a>
+		<div class="cart-inner">
+			<div class="cart_top">
+				<h3>my cart</h3>
+				<div class="close-cart">
+					<a href="javascript:void(0)" onclick="closeCart()"> <i
+						class="fa fa-times" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<div class="cart_media">
+				<ul class="cart_product">
+					<li>
+						<div class="media">
+							<a href="#"> <img alt="" class="mr-3"
+								th:src="@{/frontend/images/layout-3/product/1.jpg}">
+							</a>
+							<div class="media-body">
+								<a href="#">
+									<h4>item name</h4>
+								</a>
+								<h4>
+									<span>1 x $ 299.00</span>
+								</h4>
+							</div>
+						</div>
+
+					</li>
+					<li>
+						<div class="media">
+							<a href="#"> <img alt="" class="mr-3"
+								th:src="@{/frontend/images/layout-3/product/2.jpg}">
+							</a>
+							<div class="media-body">
+								<a href="#">
+									<h4>item name</h4>
+								</a>
+								<h4>
+									<span>1 x $ 299.00</span>
+								</h4>
+							</div>
+						</div>
+
+					</li>
+					<li>
+						<div class="media">
+							<a href="#"><img alt="" class="mr-3"
+								th:src="@{/frontend/images/layout-3/product/3.jpg}"></a>
+							<div class="media-body">
+								<a href="#">
+									<h4>item name</h4>
+								</a>
+								<h4>
+									<span>1 x $ 299.00</span>
+								</h4>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<ul class="cart_total">
+					<li>
+						<div class="buttons">
+							<a href="/user/shoppingCart"
+								class="btn btn-normal btn-xs view-cart">view cart</a> <a
+								th:href="@{/user/checkout}"
+								class="btn btn-normal btn-xs checkout">checkout</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- Add to cart bar end-->
+
+
+
+
+	<!-- Quick-view modal popup start-->
+	<div class="modal fade bd-example-modal-lg theme-modal" id="quick-view"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content quick-view-modal">
+				<div class="modal-body">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<div class="row">
+						<div class="col-lg-6 col-xs-12">
+							<div class="quick-view-img">
+								<img th:src="@{/frontend/images/layout-3/product/a3.jpg}" alt=""
+									class="img-fluid ">
+							</div>
+						</div>
+						<div class="col-lg-6 rtl-text">
+							<div class="product-right">
+								<h2>Women Pink Shirt</h2>
+								<h3>$32.96</h3>
+								<ul class="color-variant">
+									<li class="bg-light0"></li>
+									<li class="bg-light1"></li>
+									<li class="bg-light2"></li>
+								</ul>
+								<div class="border-product">
+									<h6 class="product-title">product details</h6>
+									<p>Sed ut perspiciatis, unde omnis iste natus error sit
+										voluptatem accusantium doloremque laudantium</p>
+								</div>
+								<div class="product-description border-product">
+									<div class="size-box">
+										<ul>
+											<li class="active"><a href="#">s</a></li>
+											<li><a href="#">m</a></li>
+											<li><a href="#">l</a></li>
+											<li><a href="#">xl</a></li>
+										</ul>
+									</div>
+									<h6 class="product-title">quantity</h6>
+									<div class="qty-box">
+										<div class="input-group">
+											<span class="input-group-prepend"><button
+													type="button" class="btn quantity-left-minus"
+													data-type="minus" data-field="">
+													<i class="ti-angle-left"></i>
+												</button> </span> <input type="text" name="quantity"
+												class="form-control input-number" value="1"> <span
+												class="input-group-prepend"><button type="button"
+													class="btn quantity-right-plus" data-type="plus"
+													data-field="">
+													<i class="ti-angle-right"></i>
+												</button></span>
+										</div>
+									</div>
+								</div>
+								<div class="product-buttons">
+									<a href="#" class="btn btn-normal">add to cart</a> <a href="#"
+										class="btn btn-normal">view detail</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Quick-view modal popup end-->
+
+	<!-- My account bar start-->
+	<div id="myAccount" class="add_to_cart right account-bar">
+		<a href="javascript:void(0)" class="overlay" onclick="closeAccount()"></a>
+		<div class="cart-inner">
+			<div class="cart_top">
+				<h3>Đăng Nhập</h3>
+				<div class="close-cart">
+					<a href="javascript:void(0)" onclick="closeAccount()"> <i
+						class="fa fa-times" aria-hidden="true"></i>
+					</a>
+				</div>
+
+				<th:block
+					th:if="${#session != null && #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}">
+					<div th:if="${#request.getParameter('error') == 'true'}"
+						style="color: red; margin: 10px 0px;">
+						Login Failed!!!<br /> Reason : <span
+							th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}"></span>
+					</div>
+				</th:block>
+			</div>
+			<form class="theme-form" method="POST"
+				th:action="@{/j_spring_security_check}">
+				<div class="form-group">
+					<label for="email">Tên đăng nhập:</label> <input type="text"
+						name="userName" class="form-control" id="email"
+						placeholder="Nhập tên đăng nhập" required="">
+				</div>
+				<div class="form-group">
+					<label for="review">Mật khẩu:</label> <input type="password"
+						name="password" class="form-control" id="review"
+						placeholder="Nhập mật khẩu" required="">
+				</div>
+				<div class="form-group">
+					<button class="btn btn-normal" style="border-radius: 10px">Đăng
+						Nhập</button>
+				</div>
+				<div>
+					<h5 class="forget-class">
+						<a th:href="@{/forget-pwd}" id="fgpwd" class="d-block">Quên
+							mật khẩu</a>
+					</h5>
+					<h6 class="forget-class">
+						<a th:href="@{/usr/register}" class="txt-default pt-3 d-block"
+							style="color: red;">Tạo tài khoản</a>
+
+					</h6>
+				</div>
+			</form>
+			<div class="kiki">
+				<a class="btn btn-normal mt-3"
+					style="width: 90%; background-color: #3B5998; border-radius: 15%;"
+					href="https://www.facebook.com/dialog/oauth?client_id=409984703332791&redirect_uri=https://localhost:8443/login-facebook"><i
+					class="fa fa-facebook"> Login With Facebook</i></a>
+			</div>
+			<div class="kiki">
+				<a class="btn btn-normal mt-3"
+					style="width: 90%; background-color: #dd4b39; border-radius: 15%;"
+					href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=https://localhost:8443/login-google&response_type=code&client_id=60692742096-97tunicelcfs7l5p4v91ujc31tb2edli.apps.googleusercontent.com&approval_prompt=force"><i
+					class="fa fa-google"> Login With Google</i></a>
+			</div>
+		</div>
+	</div>
+	</div>
+	<!-- Add to account bar end-->
+
+	<!-- Add to wishlist bar -->
+	<div id="wishlist_side" class="add_to_cart right">
+		<a href="javascript:void(0)" class="overlay" onclick="closeWishlist()"></a>
+		<div class="cart-inner">
+			<div class="cart_top">
+				<h3>my wishlist</h3>
+				<div class="close-cart">
+					<a href="javascript:void(0)" onclick="closeWishlist()"> <i
+						class="fa fa-times" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<div class="cart_media">
+				<ul class="cart_product">
+					<li>
+						<div class="media">
+							<a href="#"> <img alt="" class="mr-3"
+								th:src="@{/frontend/images/layout-1/media-banner/1.jpg}">
+							</a>
+							<div class="media-body">
+								<a href="#">
+									<h4>item name</h4>
+								</a>
+								<h4>
+									<span>sm</span> <span>, blue</span>
+								</h4>
+								<h4>
+									<span>$ 299.00</span>
+								</h4>
+							</div>
+						</div>
+						<div class="close-circle">
+							<a> <i class="ti-trash" aria-hidden="true"></i>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="media">
+							<a href="#"> <img alt="" class="mr-3"
+								th:src="@{/frontend/images/layout-1/media-banner/2.jpg}">
+							</a>
+							<div class="media-body">
+								<a href="#">
+									<h4>item name</h4>
+								</a>
+								<h4>
+									<span>sm</span> <span>, blue</span>
+								</h4>
+								<h4>
+									<span>$ 299.00</span>
+								</h4>
+							</div>
+						</div>
+						<div class="close-circle">
+							<a href="#"> <i class="ti-trash" aria-hidden="true"></i>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="media">
+							<a href="#"><img alt="" class="mr-3"
+								th:src="@{/frontend/images/layout-1/media-banner/3.jpg}"></a>
+							<div class="media-body">
+								<a href="#">
+									<h4>item name</h4>
+								</a>
+								<h4>
+									<span>sm</span> <span>, blue</span>
+								</h4>
+								<h4>
+									<span>$ 299.00</span>
+								</h4>
+							</div>
+						</div>
+						<div class="close-circle">
+							<a href="#"> <i class="ti-trash" aria-hidden="true"></i>
+							</a>
+						</div>
+					</li>
+				</ul>
+				<ul class="cart_total">
+					<li>
+						<div class="total">
+							<h5>
+								subtotal : <span>$299.00</span>
+							</h5>
+						</div>
+					</li>
+					<li>
+						<div class="buttons">
+							<a href="wishlist.html"
+								class="btn btn-normal btn-block  view-cart">view wislist</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- Add to wishlist bar end-->
+
+	<!-- add to  setting bar  start-->
+	<div id="mySetting" class="add_to_cart right">
+		<a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
+		<div class="cart-inner">
+			<div class="cart_top">
+				<h3>my setting</h3>
+				<div class="close-cart">
+					<a href="javascript:void(0)" onclick="closeSetting()"> <i
+						class="fa fa-times" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+			<div class="setting-block">
+				<div>
+					<h5>language</h5>
+					<ul>
+						<li><a href="#">english</a></li>
+						<li><a href="#">french</a></li>
+					</ul>
+					<h5>currency</h5>
+					<ul>
+						<li><a href="#">uro</a></li>
+						<li><a href="#">rupees</a></li>
+						<li><a href="#">pound</a></li>
+						<li><a href="#">doller</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- latest jquery-->
+	<script th:src="@{/frontend/js/jquery-3.3.1.min.js}"></script>
+
+	<!-- slick js-->
+	<script th:src="@{/frontend/js/slick.js}"></script>
+
+	<!-- popper js-->
+	<script th:src="@{/frontend/js/popper.min.js}"></script>
+
+	<!-- Bootstrap js-->
+	<script th:src="@{/frontend/js/bootstrap.js}"></script>
+	<script th:src="@{/frontend/js/bootstrap-notify.min.js}"></script>
+
+	<!-- elevatezoom js-->
+	<script th:src="@{/frontend/js/jquery.elevatezoom.js}"></script>
+
+	<!-- Timer js-->
+	<script th:src="@{/frontend/js/menu.js}"></script>
+
+	<!-- Theme js-->
+	<script th:src="@{/frontend/js/script.js}"></script>
+	<scirpt> function addToCart() { location.href =
+	"/user/buyProduct"; } </scirpt>
+</body>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+	window.fbAsyncInit = function() {
+		FB.init({
+			xfbml : true,
+			version : 'v9.0'
+		});
+	};
+
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id))
+			return;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+</body>
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/html/product-page(left-sidebar).html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Jan 2021 04:48:12 GMT -->
+
+</html>

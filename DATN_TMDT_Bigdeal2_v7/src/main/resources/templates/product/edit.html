@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-nav}  
+                                               )}">
+
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Sep 2020 08:00:24 GMT -->
+
+<head>
+
+</head>
+
+<body>
+    <div id="home-nav" th:replace="~{/fragments/app-fragments :: nav-default}">Home Nav
+    </div>
+    <div id="home-main-content">
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="page-header-left">
+                            <h3>
+                                Chỉnh sửa Sản Phẩm
+                                <!-- <small>Bigdeal Admin panel</small> -->
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ol class="breadcrumb pull-right">
+                            <li class="breadcrumb-item"><a href="index.html"><i
+									data-feather="home"></i></a></li>
+                            <li class="breadcrumb-item">Chi tiết</li>
+                            <li class="breadcrumb-item active">Chỉnh sửa Sản Phẩm</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid Ends-->
+
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Chỉnh sửa Sản Phẩm</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="page-title"></div>
+                            <div th:if="${errorMessage!= null}" class="error-message" th:utext="${errorMessage}"></div>
+
+                            <form class="row g-3 needs-validation" novalidate th:object="${productForm}" th:action="@{/admin/product}" method="POST" enctype="multipart/form-data">
+
+
+                                <div class="col-md-4" th:if="${!productForm.newProduct}">
+                                    <label for="validationCustom01" class="form-label">Mã
+										Sản Phẩm:</label> <input th:field="*{newProduct}" type="hidden" class="form-control" id="validationCustom01" required>
+                                    <th:block th:if="${!productForm.newProduct}">
+                                        <span style="color: red;" th:utext="${productForm.code}"></span>
+                                        <input type="hidden" th:field="*{code}" />
+                                    </th:block>
+                                    <span class="error-message" th:if="${#fields.hasErrors('code')}" th:errors="*{code}">..</span>
+                                    <div class="invalid-feedback">vui lòng nhập mã sản phẩm!
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4" th:if="${productForm.newProduct}">
+                                    <label for="validationCustom01" class="form-label">Mã
+										Sản Phẩm:</label> <input th:field="*{newProduct}" type="hidden" /> <input type="text" th:field="*{code}" class="form-control" id="validationCustom01" required> <span class="error-message" th:if="${#fields.hasErrors('code')}"
+                                        th:errors="*{code}"></span>
+
+                                    <div class="invalid-feedback">vui lòng nhập mã sản phẩm!
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="col-md-4">
+                                    <label for="validationCustom02" class="form-label">Tên
+										Sản Phẩm:</label> <input type="text" th:field="*{name}" class="form-control" id="validationCustom02" required>
+                                    <span class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">..</span>
+                                    <div class="invalid-feedback">vui long nhập tên sản phẩm!
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="validationCustomUsername" class="form-label">Giá
+										Bán:</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" th:field="*{price}" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required> <span class="error-message" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+                                        <div class="invalid-feedback">vui lòng nhập giá bán!</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="validationCustom04" class="form-label">Thể
+										Loại:</label> <select class="form-select" th:field="*{categoryId}" id="validationCustom04" required>
+										<option selected disabled value="">Choose...</option>
+										<option th:each="category : ${categories.list}"
+											th:value="${category.id}" th:text="${category.categoryName}">...</option>
+									</select>
+                                    <div class="invalid-feedback">vui lòng nhập thể loại!</div>
+                                    <span class="error-message" th:if="${#fields.hasErrors('categoryId')}" th:errors="*{categoryId}">..</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationCustom04" class="form-label">Nhãn
+										Hiệu:</label> <select class="form-select" th:field="*{brandId}" id="validationCustom04" required>
+										<option selected disabled value="">Choose...</option>
+										<option th:each="item : ${brands.list}" th:value="${item.id}"
+											th:text="${item.brandName}">...</option>
+									</select>
+                                    <div class="invalid-feedback">vui lòng nhập nhãn hiệu!</div>
+                                    <span class="error-message" th:if="${#fields.hasErrors('brandId')}" th:errors="*{brandId}">..</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationCustom03" class="form-label">Giảm
+										Giá:</label> <input type="text" th:field="*{discount}" class="form-control" id="validationCustom03" required>
+                                    <div class="invalid-feedback">vui lòng nhập giảm giá!</div>
+                                    <span class="error-message" th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}">..</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationCustom05" class="form-label">Số
+										Lượng:</label> <input type="text" th:field="*{amount}" class="form-control" id="validationCustom05" required>
+                                    <div class="invalid-feedback">vui lòng nhập số lượng!</div>
+                                    <span class="error-message" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">..</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationCustom05" class="form-label">Mô
+										Tả:</label>
+                                    <textarea class="form-control" th:field="*{discription}" id="exampleFormControlTextarea1" rows="4" required></textarea>
+                                    <div class="invalid-feedback">vui lòng nhập mô tả!</div>
+                                    <span class="error-message" th:if="${#fields.hasErrors('discription')}" th:errors="*{discription}">..</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationCustom05" class="form-label">Mô
+										Tả Ngắn:</label>
+                                    <textarea class="form-control" th:field="*{sort_discription}" id="exampleFormControlTextarea1" rows="4" required></textarea>
+                                    <div class="invalid-feedback">vui lòng nhập mô tả ngắn!</div>
+                                    <span class="error-message" th:if="${#fields.hasErrors('sort_discription')}" th:errors="*{sort_discription}">..</span>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    <img id="anh" th:src="@{|/productImage?code=${productForm.code}|}" width="100px" height="100px" style="width: 200px; height: 200px;"> <input type="file" th:field="*{fileData}" onchange="preview()" required>
+                                    <div class="invalid-feedback">vui lòng chọn hình ảnh!</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <img id="anh1" th:src="@{|/productImage2?code=${productForm.code}|}" width="100px" height="100px" style="width: 200px; height: 200px;"> <input type="file" th:field="*{fileimage2}" onchange="preview1()" required>
+                                    <div class="invalid-feedback">vui lòng chọn hình ảnh!</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <img id="anh2" th:src="@{|/productImage3?code=${productForm.code}|}" width="100px" height="100px" style="width: 200px; height: 200px;"> <input type="file" th:field="*{fileimage3}" onchange="preview2()" required>
+                                    <div class="invalid-feedback">vui lòng chọn hình ảnh!</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <img id="anh3" th:src="@{|/productImage4?code=${productForm.code}|}" width="100px" height="100px" style="width: 200px; height: 200px;"> <input type="file" th:field="*{fileimage4}" onchange="preview3()" required>
+                                    <div class="invalid-feedback">vui lòng chọn hình ảnh!</div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit" value="Submit">Submit
+										form</button>
+                                    <a th:href="@{/admin/products}" type="reset" value="Reset" class="btn btn-warning"> Back</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid Ends-->
+
+    </div>
+
+
+</body>
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Sep 2020 08:01:49 GMT -->
+
+</html>

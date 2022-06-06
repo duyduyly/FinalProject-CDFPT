@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">123456</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/datn</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">true</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <mapping resource="com/bigdeal/entity/Role.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Banner.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Citys.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Ward.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Blogs.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Districts.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Supplys.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Contact.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Countries.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Brands.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Wish.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Categories.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/User.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/UsersRoles.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Employees.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/ProductRating.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Discount.hbm.xml"/>
+        <mapping resource="com/bigdeal/entity/Customers.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

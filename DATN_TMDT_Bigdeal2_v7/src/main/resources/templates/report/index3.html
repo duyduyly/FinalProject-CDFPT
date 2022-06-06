@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-nav}  
+                                               )}">
+
+
+<head>
+
+</head>
+
+<body>
+    <div id="home-nav" th:replace="~{/fragments/app-fragments :: nav-default}">Home Nav
+    </div>
+    <div id="home-main-content">
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="page-header-left">
+                            <h3>Thống kê doanh thu theo năm</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ol class="breadcrumb pull-right">
+                            <li class="breadcrumb-item"><a href="/admin"><i
+									data-feather="home"></i>Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Thống kê doanh thu theo năm
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid Ends-->
+
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input id="myInput" type="text" placeholder="nhập năm để tìm kiếm" style="width: 350px; height: 35px">
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="myTable" class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Ngày đặt hàng</th>
+                                                    <th scope="col">Số tiền</th>
+
+                                                </tr>
+                                            </thead>
+
+                                            <tbody id="myTable">
+                                                <tr th:each="yea : ${resultyear}">
+                                                    <td th:text="${yea.orderNum + 1900}"></td>
+
+                                                    <!-- <td th:text="${#dates.format('2020/' + (item.orderNum + 1), 'yyyy')}"></td> -->
+
+                                                    <td th:text="${#numbers.formatDecimal(yea.amount, 0, 'COMMA', 2, 'POINT')}"></td>
+
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <script>
+                                        $(document).ready(function() {
+                                            $("#myInput").on("keyup", function() {
+                                                var value = $(this).val().toLowerCase();
+                                                $("#myTable tr").filter(function() {
+                                                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                                });
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid Ends-->
+
+    </div>
+
+</body>
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Sep 2020 08:01:49 GMT -->
+
+</html>
+
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8">
+      <title>Books Shop Online</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
+   </head>
+   <body>
+      <th:block th:include="/_header"></th:block>
+      <th:block th:include="/_menu"></th:block>
+       
+      <div class="page-title">Shopping Cart Demo</div>
+      <div class="demo-container">
+         <h3>Demo content</h3>
+         <ul>
+            <li>Buy online</li>
+            <li>Admin pages</li>
+            <li>Reports</li>
+         </ul>
+      </div>
+       
+      <th:block th:include="/_footer"></th:block>
+       
+   </body>
+</html> -->

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-nav}  
+                                               )}">
+
+
+
+<head>
+
+</head>
+
+<body>
+	<div id="home-nav"
+		th:replace="~{/fragments/app-fragments :: nav-default}">Home Nav
+	</div>
+	<div id="home-main-content">
+		<!-- Container-fluid starts-->
+		<div class="container-fluid">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="page-header-left">
+							<h3>
+								Chi Tiết Sản Phẩm
+								<!-- <small>Bigdeal Admin panel</small> -->
+							</h3>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<ol class="breadcrumb pull-right">
+							<li class="breadcrumb-item"><a href="index.html"><i
+									data-feather="home"></i></a></li>
+							<li class="breadcrumb-item">Chi tiết</li>
+							<li class="breadcrumb-item active" th:utext="#{menu.product}">Chi
+								Tiết Sản Phẩm</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Container-fluid Ends-->
+
+		<!-- Container-fluid starts-->
+		<div class="container-fluid">
+			<div class="row">
+
+
+				<div class="col-sm-12">
+					<div class="card">
+						<div class="card-header">
+							<div>
+								<!-- <a th:href="@{/admin/product/edit}" class="btn btn-primary" th:utext="#{button.add}">Add </a><br> <br> -->
+
+								<a th:href="@{/admin/product/edit}" class="btn btn-success"><i
+									class="fa fa-plus" aria-hidden="true"></i></a>
+								<div class="mysr" style="float: right;">
+									<label for="exampleDataList" class="form-label">Tìm
+										kiếm sản phẩm</label><br> <input class="form-control"
+										onkeyup="myFunction()" id="myInput"
+										placeholder="Type to search..." style="width: 350px">
+
+								</div>
+
+
+								<br> <br>
+								<h3>
+									Tổng sản phẩm: <span th:utext="${CuontProducts}">9856</span>
+								</h3>
+
+
+							</div>
+						</div>
+						<div class="card-body">
+							<div id="" class="">
+
+								<table class="table table-bordered table-hover">
+									<thead>
+										<!-- <tr>
+											<!-- <th scope="col" th:utext="#{product.image}">Image</th>
+											<th scope="col" th:utext="#{product.code}">Product code</th>
+											<th scope="col" th:utext="#{product.name}">Product Name</th>
+											<th scope="col" th:utext="#{product.price}">Price</th>
+											<th scope="col" th:utext="#{product.category}">Category</th>
+											<th scope="col" th:utext="#{product.brand}">Brand</th>
+											<th scope="col" th:utext="#{product.discount}">Discount</th>
+											<th scope="col">amount</th>
+											<th scope="col">describe</th>
+											<th scope="col">short_description</th>
+											<th scope="col"></th> -->
+										<!-- </tr> -->
+
+										<th scope="col">Hình Ảnh</th>
+										<th scope="col">Mã Sản Phẩm</th>
+										<th scope="col">Tên sản Phẩm</th>
+										<th scope="col">Giá Bán</th>
+										<th scope="col">Thể Loại</th>
+										<!-- <th scope="col">NHÃN Hiệu</th>
+                                        <th scope="col">Giảm Giá</th>
+                                        <th scope="col">Số Lượng</th>
+                                        <th scope="col">Mô Tả</th>
+                                        <th scope="col">Mô Tả Ngắn</th> -->
+										<th scope="col">Chức Năng</th>
+									</thead>
+									<tbody id="myTable">
+										<tr th:each="prodInfo : ${paginationProducts.list}">
+											<td><img class="product-image"
+												th:src="@{|/productImage?code=${prodInfo.code}|}" width="80"
+												height="80" /></td>
+											<td th:text="${prodInfo.code}"></td>
+											<td th:text="${prodInfo.name}"></td>
+											<td
+												th:text="${#numbers.formatDecimal(prodInfo.price, 0, 'COMMA', 0, 'POINT')}">
+											</td>
+											<td th:text="${prodInfo.categoryName}"></td>
+											<!-- <td th:text="${prodInfo.brandName}"></td> -->
+											<!-- <td th:text="${prodInfo.discount + ' %'}"></td>
+                                            <td th:text="${prodInfo.amount}"></td> -->
+											<!-- <td th:text="${prodInfo.discription}"></td> -->
+											<!-- <td th:text="${prodInfo.sort_discription}"></td> -->
+											<td>
+												<!-- ghi chú   th:utext="#{button.edit}" th:utext="#{button.delete}"-->
+												<a
+												th:href="@{/admin/product/edit?code={code}(code=${prodInfo.code})}"
+												class="btn btn-primary"><i class="fa fa-pencil-square-o"
+													aria-hidden="true"></i></a> <a
+												th:href="@{/admin/product/delete?code={code}(code=${prodInfo.code})}"
+												class="btn btn-danger"><i class="fa fa-trash"
+													aria-hidden="true"></i></a> <a
+												th:href="@{|/admin/product/view?code=${prodInfo.code}|}"
+												class="btn btn-warning"><i class="fa fa-eye"
+													aria-hidden="true"></i></a> <!-- <a
+												th:href="@{|/admin/product/product-detail?code=${prodInfo.code}|}"
+												class="btn btn-info"><i class="fa fa-book"
+													aria-hidden="true"></i> </a> -->
+
+											</td>
+
+										</tr>
+
+									</tbody>
+								</table>
+								<br />
+								<div class="page-navigator"
+									th:if="${paginationProducts.totalPages > 1}">
+									<th:block
+										th:each="page : ${paginationProducts.navigationPages}">
+
+										<a th:href="@{|/admin/products?page=${page}|}"
+											th:if="${page != -1}" class="nav-item" th:utext="${page}"></a>
+
+										<span class="nav-item" th:if="${page == -1}"> ... </span>
+
+									</th:block>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Container-fluid Ends-->
+
+	</div>
+
+
+</body>
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Sep 2020 08:01:49 GMT -->
+
+</html>

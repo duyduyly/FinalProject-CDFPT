@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="big_deal" match-name="banner"/>
+  <table-filter match-catalog="big_deal" match-name="blogs"/>
+  <table-filter match-catalog="big_deal" match-name="brands"/>
+  <table-filter match-catalog="big_deal" match-name="categories"/>
+  <table-filter match-catalog="big_deal" match-name="citys"/>
+  <table-filter match-catalog="big_deal" match-name="contact"/>
+  <table-filter match-catalog="big_deal" match-name="countries"/>
+  <table-filter match-catalog="big_deal" match-name="customers"/>
+  <table-filter match-catalog="big_deal" match-name="discount"/>
+  <table-filter match-catalog="big_deal" match-name="districts"/>
+  <table-filter match-catalog="big_deal" match-name="employees"/>
+  <table-filter match-catalog="big_deal" match-name="product_rating"/>
+  <table-filter match-catalog="big_deal" match-name="role"/>
+  <table-filter match-catalog="big_deal" match-name="supplys"/>
+  <table-filter match-catalog="big_deal" match-name="user"/>
+  <table-filter match-catalog="big_deal" match-name="users_roles"/>
+  <table-filter match-catalog="big_deal" match-name="ward"/>
+  <table-filter match-catalog="big_deal" match-name="wish"/>
+</hibernate-reverse-engineering>

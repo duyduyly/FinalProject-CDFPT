@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="main-fragment (otherStaticResources,mainContent,nav)">
+
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Sep 2020 08:00:24 GMT -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bigdeal admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Bigdeal admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+    <link rel="icon" href="https://themes.pixelstrap.com/bigdeal/assets/images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://themes.pixelstrap.com/bigdeal/assets/images/favicon/favicon.ico" type="image/x-icon">
+    <title>Bigdeal - Premium Admin Template</title>
+    <script src="https://use.fontawesome.com/d5f66e0a77.js"></script>
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Font Awesome-->
+
+
+    <!-- <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- ico-font-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Prism css-->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/prism.css}">
+
+    <!-- Chartist css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/chartist.css}">
+
+    <!-- vector map css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/vector-map.css}">
+
+    <!-- Bootstrap css
+ -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/bootstrap.css}">
+
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/admin.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/owlcarousel.css}">
+    <!--     <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+ -->
+
+</head>
+
+<body>
+
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper">
+
+        <!-- Page Header Start-->
+        <div class="page-main-header">
+            <div class="main-header-left">
+                <div class="logo-wrapper">
+                    <a href="/admin"><img class="blur-up lazyloaded" th:src="@{/frontend/images/layout-2/logo/logo3.jpg}" alt="" style="width: 23%; margin-left: 60px"></a>
+                </div>
+            </div>
+            <div class="main-header-right row">
+                <!-- <div class="mobile-sidebar">
+					<div class="media-body text-right switch-sm">
+						<label class="switch"> <input id="sidebar-toggle"
+							type="checkbox" checked="checked"><span
+							class="switch-state"></span>
+						</label>
+					</div>
+				</div> -->
+                <div class="nav-right col">
+                    <ul class="nav-menus">
+                        <li>
+                            <form class="form-inline search-form">
+                                <div class="form-group">
+                                    <input class="form-control-plaintext" name="name" type="search" placeholder="Search.."><span class="d-sm-none mobile-search" onclick="$('#searchForm').submit()"><i
+										data-feather="search"></i></span>
+                                </div>
+                            </form>
+                        </li>
+                        <li class="onhover-dropdown">
+                            <a class="txt-dark" href="#">
+                                <h6>EN</h6>
+                            </a>
+                            <ul class="language-dropdown onhover-show-div p-20">
+                                <li><a th:href="@{?lang=en}"><i
+										class="flag-icon flag-icon-uy"></i> English</a></li>
+                                <li><a th:href="@{?lang=vi}"><i
+										class="flag-icon flag-icon-um"></i> Việt Nam</a></li>
+                            </ul>
+                        </li>
+                        <li class="onhover-dropdown">
+                            <div class="media align-items-center">
+                                <!-- hiển thị avatar thanh dọc -->
+                                <img class="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" th:src="@{|/avatar|}" alt="header-user">
+                                <div class="dotted-animation">
+                                    <span class="animate-circle"></span><span class="main-circle"></span>
+                                </div>
+                            </div>
+                            <ul class="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
+
+                                <li><a th:href="@{/logout}">Đăng Xuất<span
+										class="pull-right"><i data-feather="logout"></i></span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-lg-none mobile-toggle pull-right">
+                        <i data-feather="more-horizontal"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header Ends -->
+
+        <!-- Page Body Start-->
+        <div class="page-body-wrapper">
+
+            <th:block th:include="/fragments/_menu"></th:block>
+
+            <div class="page-body" th:insert="${mainContent} ?: ~{}"></div>
+
+            <th:block th:include="/fragments/_footer"></th:block>
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript" th:src="@{/assets/validate/customform.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+
+
+    <!-- latest jquery-->
+    <script th:src="@{/assets/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/assets/Vali/customfile.js}"></script>
+    <!-- Bootstrap js-->
+    <script th:src="@{/assets/js/popper.min.js}"></script>
+    <script th:src="@{/assets/js/bootstrap.js}"></script>
+
+    <!-- feather icon js-->
+    <script th:src="@{/assets/js/icons/feather-icon/feather.min.js}"></script>
+    <script th:src="@{/assets/js/icons/feather-icon/feather-icon.js}"></script>
+
+    <!-- Sidebar jquery-->
+    <script th:src="@{/assets/js/sidebar-menu.js}"></script>
+
+    <!--chartist js-->
+    <script th:src="@{/assets/js/chart/chartist/chartist.js}"></script>
+
+
+    <!-- lazyload js-->
+    <script th:src="@{/assets/js/lazysizes.min.js}"></script>
+
+    <!--copycode js-->
+    <script th:src="@{/assets/js/prism/prism.min.js}"></script>
+    <script th:src="@{/assets/js/clipboard/clipboard.min.js}"></script>
+    <script th:src="@{/assets/js/custom-card/custom-card.js}"></script>
+
+    <!--counter js-->
+    <script th:src="@{/assets/js/counter/jquery.waypoints.min.js}"></script>
+    <script th:src="@{/assets/js/counter/jquery.counterup.min.js}"></script>
+    <script th:src="@{/assets/js/counter/counter-custom.js}"></script>
+
+    <!--Customizer admin-->
+    <script th:src="@{/assets/js/admin-customizer.js}"></script>
+
+    <!--map js-->
+    <script th:src="@{/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js}"></script>
+    <script th:src="@{/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js}"></script>
+
+    <!--apex chart js-->
+    <script th:src="@{/assets/js/chart/apex-chart/apex-chart.js}"></script>
+    <script th:src="@{/assets/js/chart/apex-chart/stock-prices.js}"></script>
+
+    <!--chartjs js-->
+    <script th:src="@{/assets/js/chart/flot-chart/excanvas.js}"></script>
+    <script th:src="@{/assets/js/chart/flot-chart/jquery.flot.js}"></script>
+    <script th:src="@{/assets/js/chart/flot-chart/jquery.flot.time.js}"></script>
+    <script th:src="@{/assets/js/chart/flot-chart/jquery.flot.categories.js}"></script>
+    <script th:src="@{/assets/js/chart/flot-chart/jquery.flot.stack.js}"></script>
+    <script th:src="@{/assets/js/chart/flot-chart/jquery.flot.pie.js}"></script>
+    <!--dashboard custom js-->
+    <script th:src="@{/assets/js/dashboard/default.js}"></script>
+
+    <!--right sidebar js-->
+    <script th:src="@{/assets/js/chat-menu.js}"></script>
+
+    <!--height equal js-->
+    <script th:src="@{/assets/js/equal-height.js}"></script>
+
+    <!-- lazyload js-->
+    <script th:src="@{/assets/js/lazysizes.min.js}"></script>
+
+    <!--script admin-->
+    <script th:src="@{/assets/js/admin-script.js}"></script>
+
+</body>
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Sep 2020 08:01:49 GMT -->
+
+</html>

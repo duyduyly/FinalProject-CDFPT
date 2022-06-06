@@ -1,0 +1,48 @@
+<!-- Page Sidebar Start-->
+<div class="page-sidebar">
+    <div class="sidebar custom-scrollbar">
+        <div class="sidebar-user text-center">
+            <!-- hiển thị avatar thanh menu dọc -->
+            <div><img class="img-60 rounded-circle lazyloaded blur-up" th:src="@{|/avatar|}" alt="#">
+            </div>
+            <h6 class="mt-3 f-14" th:utext="${#request.userPrincipal?.name}"></h6>
+            <p th:utext="${#request.userPrincipal?.authorities}"></p>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a class="sidebar-header" th:href="@{/admin/}"><span class="fa fa-home">Trang Chủ</span></a></li>
+            <li><a class="sidebar-header" th:href="@{/admin/accounts}"><span class="fa fa-user" th:utext="#{menu.user}"> </span></a></li>
+            <li><a class="sidebar-header" th:href="@{/admin/products}"><span class="fa fa-list" th:utext="#{menu.product}"> Sản Phẩm</span></a></li>
+            <li><a class="sidebar-header" th:href="@{/admin/categories}"><span class="fa fa-tags" th:utext="#{menu.category}">Thể Loại</span></a></li>
+            <li><a class="sidebar-header" th:href="@{/admin/brands}"><span class="fa fa-flag" th:utext="#{menu.brand}">Xuất Xứ</span></a></li>
+            <li><a class="sidebar-header" th:href="@{/admin/blogs}"><span class="fa fa-newspaper-o" th:utext="#{menu.blog}"> Tin Tức</span></a></li>
+            <li><a class="sidebar-header" th:href="@{/admin/customers}"><span class="fa fa-users" th:utext="#{menu.customer}"> Khách Hàng</span></a></li>
+            <li><a class="sidebar-header" th:href="@{/admin/contacts}"><span class="fa fa-address-card" th:utext="#{menu.contact}"> Liên Hệ</span></a></li>
+            <li><a class="sidebar-header" th:href="@{/admin/orders}"><span class="fa fa-shopping-cart" th:utext="#{menu.order}"> Đơn Hàng</span></a></li>
+            <li><a class="sidebar-header" th:href="@{/admin/banners}"><span class="fa fa-shopping-cart" th:utext="#{menu.banner}"> Quảng Cáo</span></a></li>
+            <li><a class="sidebar-header" href="#"><span class="fa fa-bar-chart" th:utext="#{menu.report}"> Thống Kê</span></a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a th:href="@{/admin/report/product}"><i class="fa fa-circle"></i>
+                                    <span th:text="#{report.product}">Sản Phẩm</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/admin/report/profit}"><i class="fa fa-circle"></i>
+                                    <span th:text="#{report.profit}">Doanh Thu Tháng</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/admin/report/year}"><i class="fa fa-circle"></i>
+                                    <span th:text="#{report.profit}">Doanh Thu Năm</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- Page Sidebar Ends-->
+
+<!-- Right sidebar Start-->
+
+<!-- Right sidebar Ends-->

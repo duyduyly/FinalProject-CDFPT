@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-nav}  
+                                               )}">
+
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Sep 2020 08:00:24 GMT -->
+<head>
+
+</head>
+
+<body>
+	<div id="home-nav"
+		th:replace="~{/fragments/app-fragments :: nav-default}">Home Nav
+	</div>
+	<div id="home-main-content">
+		<!-- Container-fluid starts-->
+		<div class="container-fluid">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="page-header-left">
+							<h3>
+								Contact List <small>Bigdeal Admin panel</small>
+							</h3>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<ol class="breadcrumb pull-right">
+							<li class="breadcrumb-item"><a href="/admin"><i
+									data-feather="home"></i>Home</a></li>
+							<li class="breadcrumb-item active">Contact List</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Container-fluid Ends-->
+    <!-- breadcrumb End -->
+    <section class="contact-page section-big-py-space bg-light">
+        <div class="custom-container">
+            <div class="row section-big-pb-space">
+                <div class="col-xl-6 offset-xl-3">
+                    <h3 class="text-center mb-3">Get in touch</h3>
+                    <p th:text="${mes}"></p>
+                    <form class="theme-form" th:action="@{/send}" method="POST" enctype="multipart/form-data">
+                        <div class="form-row">                          
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email:</label> <input type="text" class="form-control" id="last-name" name="email" placeholder="email" required="">
+                                </div>
+                            </div>
+
+                            
+                            <div class="col-md-12">
+                                <div>
+                                    <label for="content">Write Your Message</label>
+                                    <textarea class="form-control" placeholder="Write Your Message" id="exampleFormControlTextarea1" name="content" rows="8"></textarea>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-12">
+                                <button class="btn btn-normal" type="submit">Send Your
+									Message</button>
+                            </div>
+                            <!-- <button type="submit">Gửi</button> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <th:block th:include="/_footer"></th:block>
+       
+   </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-main-content}, 
+                                                ~{:: #home-nav}   
+                                               )}">
+
+
+<head>
+
+</head>
+
+<body>
+
+    <div id="home-main-content">
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="page-header-left">
+                            <h3>
+                                Phản hồi
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ol class="breadcrumb pull-right">
+                            <li class="breadcrumb-item"><a href="/admin"><i
+									data-feather="home"></i>Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Phản hồi</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid Ends-->
+
+        <section class="contact-page section-big-py-space bg-light">
+            <div class="custom-container">
+                <div class="row section-big-pb-space">
+                    <div class="col-xl-6 offset-xl-3">
+                        <h3 class="text-center mb-3">Gửi phản hồi</h3>
+                        <p th:text="${mes}"></p>
+                        <form class="theme-form" th:action="@{/send}" method="POST" enctype="multipart/form-data">
+                            <div class="form-row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+
+                                        <input type="text" class="form-control" id="last-name" name="email" th:value="${form.email}" hidden />
+                                        <label th:utext="${form.email}" style="color: red;"></label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <div>
+                                        <label for="content">Viết phản hồi của bạn</label>
+                                        <textarea class="form-control" placeholder="Write Your Message" id="exampleFormControlTextarea1" name="content" rows="8"></textarea>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-12">
+                                    <button class="btn btn-normal" type="submit">Gửi</button>
+                                </div>
+                                <!-- <button type="submit">Gửi</button> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+</body>
+
+</html>

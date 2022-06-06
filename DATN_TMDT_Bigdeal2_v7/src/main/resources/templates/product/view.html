@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-nav}  
+                                               )}">
+
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Sep 2020 08:00:24 GMT -->
+<head>
+
+</head>
+
+<body>
+	<div id="home-nav"
+		th:replace="~{/fragments/app-fragments :: nav-default}">Home Nav
+	</div>
+	<div id="home-main-content">
+		<!-- Container-fluid starts-->
+		<div class="container-fluid">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="page-header-left">
+							<h3>
+								Product Rating List <small>Bigdeal Admin panel</small>
+							</h3>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<ol class="breadcrumb pull-right">
+							<li class="breadcrumb-item"><a href="/admin"><i
+									data-feather="home"></i>Home</a></li>
+							<li class="breadcrumb-item active">Product Rating List</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Container-fluid Ends-->
+
+		<!-- Container-fluid starts-->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card">
+						<div class="card-header">
+						<!-- 	<div class="customer-info-container">
+								<h3>Customer Information:</h3>
+								<ul class="list-group">
+									<li class="list-group-item">Name: <span
+										th:utext="${orderInfo.customerName}"></span></li>
+									<li class="list-group-item">Email: <span
+										th:utext="${orderInfo.customerEmail}"></span></li>
+									<li class="list-group-item">Phone: <span
+										th:utext="${orderInfo.customerPhone}"></span></li>
+									<li class="list-group-item">Address: <span
+										th:utext="${orderInfo.customerAddress}"></span></li>
+								</ul>
+								<h3 style="margin-top: 15px">Order Summary:</h3>
+								<ul class="list-group">
+									<li class="list-group-item">Total: <span class="total" style="font-weight: bold;"
+										th:utext="${#numbers.formatDecimal(orderInfo.amount,3,2,'COMMA')}">
+									</span>
+									</li>
+								</ul>
+							</div> -->
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover">
+									<thead>
+										<tr>
+											<th scope="col">Username</th>
+											<th scope="col">Product Code</th>
+											<th scope="col">Message</th>
+											
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="productRating : ${productRatings}">
+											<td th:utext="${productRating.userName}"></td>
+											<td th:utext="${productRating.productCode}"></td>
+											<td th:utext="${productRating.message}"></td>
+										
+										</tr>
+
+									</tbody>
+								</table>
+								<br />
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Container-fluid Ends-->
+
+	</div>
+
+</body>
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Sep 2020 08:01:49 GMT -->
+</html>
+
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8">
+      <title>Books Shop Online</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
+   </head>
+   <body>
+      <th:block th:include="/_header"></th:block>
+      <th:block th:include="/_menu"></th:block>
+       
+      <div class="page-title">Shopping Cart Demo</div>
+      <div class="demo-container">
+         <h3>Demo content</h3>
+         <ul>
+            <li>Buy online</li>
+            <li>Admin pages</li>
+            <li>Reports</li>
+         </ul>
+      </div>
+       
+      <th:block th:include="/_footer"></th:block>
+       
+   </body>
+</html> -->

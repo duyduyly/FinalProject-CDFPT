@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-nav}  
+                                               )}">
+
+
+
+<head>
+
+</head>
+
+<body>
+    <div id="home-nav" th:replace="~{/fragments/app-fragments :: nav-default}">Home Nav
+    </div>
+    <div id="home-main-content">
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="page-header-left">
+                            <h3>
+                                Thống Kê Sản Phẩm
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ol class="breadcrumb pull-right">
+                            <li class="breadcrumb-item"><a href="/admin"><i
+									data-feather="home"></i>Trang Chủ</a></li>
+                            <li class="breadcrumb-item active">Thống Kê Sản Phẩm</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid Ends-->
+
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <!-- 								<a th:href="@{/admin/blogs/edit}" class="btn btn-primary"><i class="fa fa-plus" th:utext="#{button.add}"></i> -->
+                                <!-- 									</a> -->
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">MÃ Sản Phẩm</th>
+                                            <th scope="col">Số Lượng</th>
+                                            <th scope="col">Tổng Tiền</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="item : ${listOrderDetail}">
+                                            <td th:text="${item.productCode}"></td>
+                                            <td th:text="${item.quanity}"></td>
+                                            <td th:text="${#numbers.formatDecimal(item.amount, 0, 'COMMA', 2, 'POINT')}"></td>
+
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid Ends-->
+
+    </div>
+
+</body>
+
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-nav}  
+                                               )}">
+
+
+<head>
+
+</head>
+
+<body>
+	<div id="home-nav"
+		th:replace="~{/fragments/app-fragments :: nav-default}">Home Nav
+	</div>
+	<div id="home-main-content">
+		<!-- Container-fluid starts-->
+		<div class="container-fluid">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="page-header-left"></div>
+					</div>
+					<div class="col-lg-6">
+						<ol class="breadcrumb pull-right">
+							<li class="breadcrumb-item"><a href="/admin"><i
+									data-feather="home"></i>Trang Chủ</a></li>
+							<li class="breadcrumb-item active">Doanh Thu Theo Tháng</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Container-fluid Ends-->
+
+		<!-- Container-fluid starts-->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card">
+						
+						<div class="card-body">
+							<div class="table-responsive">
+								<h3>Doanh Thu Theo Tháng</h3>
+								<table class="table table-bordered table-hover">
+									<thead>
+										<tr>
+											<th scope="col">Tháng</th>
+											<th scope="col">Tổng Tiền</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="item : ${results}">
+											<td th:text="${'2020/' + (item.orderNum + 1)}"></td>
+											<td
+												th:text="${#numbers.formatDecimal(item.amount, 0, 'COMMA', 2, 'POINT')}"></td>
+
+
+										</tr>
+
+									</tbody>
+								</table>
+								<br />
+
+							</div>
+							
+							<!-- <div class="table-responsive">
+								<h3>Doanh Thu Theo Năm</h3>
+								<table class="table table-bordered table-hover">
+									<thead>
+										<tr>
+											<th scope="col">Năm</th>
+											<th scope="col">Tổng Tiền</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="yea : ${resultyear}">
+											<td th:text="${yea.orderNum + 1990}"></td>
+											<td
+												th:text="${#numbers.formatDecimal(yea.amount, 0, 'COMMA', 2, 'POINT')}"></td>
+
+
+										</tr>
+
+									</tbody>
+								</table>
+								<br />
+
+							</div> -->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Container-fluid Ends-->
+
+	</div>
+
+</body>
+
+</html>

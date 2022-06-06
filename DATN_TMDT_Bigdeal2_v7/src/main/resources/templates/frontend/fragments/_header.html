@@ -1,0 +1,407 @@
+
+
+
+
+<!--header start-->
+<header>
+	<div class="mobile-fix-option"></div>
+	<div class="top-header">
+		<div class="custom-container">
+			<div class="row">
+				<div class="col-xl-5 col-md-7 col-sm-6">
+					<div class="top-header-left" style="color: white; font-size: 18px;">
+						<script language="JavaScript" type="text/javascript">
+							function makeArray(n) {
+								arglen = makeArray.arguments.length;
+								for (var i = 0; i < arglen; i++) {
+									this[i + 1] = makeArray.arguments[i];
+								}
+							}
+							var today = new Date();
+							var months = new makeArray("01", "02", "03", "04",
+									"05", "06", "07", "08", "09", "10", "11",
+									"12");
+							var days = new makeArray("Chủ nhật", "Thứ hai",
+									"Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu",
+									"Thứ bảy");
+							var dates = today.getDate();
+							var ngay = today.getDay() + 1;
+							var nam = (today.getYear() % 100) + 2000;
+							if (ngay == 0)
+								ngay += 7;
+							document.write("Hôm nay, " + days[ngay] + " ngày "
+									+ dates + " tháng "
+									+ months[today.getMonth() + 1] + " năm "
+									+ nam); //today.getYear()
+						</script>
+					</div>
+				</div>
+				<div class="col-xl-7 col-md-5 col-sm-6">
+					<div class="top-header-right">
+						<div class="top-menu-block">
+							<ul>
+								<li><a th:href="@{/frontend/contact}">Liên hệ</a></li>
+								<li><a th:href="@{/user/order-history}">Lịch sử đặt
+										hàng</a></li>
+							</ul>
+						</div>
+						<div class="language-block">
+							<div class="language-dropdown">
+								<span class="language-dropdown-click" th:utext="${#locale}">
+									Tiếng Việt <i class="fa fa-angle-down" aria-hidden="true"></i>
+								</span>
+								<ul class="language-dropdown-open">
+									<li><a th:href="@{?lang=vi}">Tiếng Anh</a></li>
+									<li><a th:href="@{?lang=en}">Tiếng Việt</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="layout-header2">
+		<div class="container">
+			<div class="col-md-12">
+				<div class="main-menu-block">
+					<div class="sm-nav-block">
+						<span class="sm-nav-btn"><i class="fa fa-bars"></i></span>
+						<ul class="nav-slide">
+							<li>
+								<div class="nav-sm-back">
+									back <i class="fa fa-angle-right pl-2"></i>
+								</div>
+							</li>
+							<li th:each="category : ${categories}"><a
+								th:href="@{/product-list?categoryId={code}(code=${category.id})}"
+								th:utext="${category.categoryName}">western ware</a></li>
+
+						</ul>
+					</div>
+					<div class="logo-block">
+						<a href="/"><img
+							th:src="@{/frontend/images/layout-2/logo/logo3.jpg}"
+							class="img-fluid" alt="logo" width="200px" height="100px"></a>
+					</div>
+					<div class="input-block">
+						<div class="input-box">
+							<form class="big-deal-form" action="/product-list"
+								id="searchForm">
+								<div class="input-group ">
+									<div class="input-group-prepend">
+										<span class="search" onclick="$('#searchForm').submit()"><i
+											class="fa fa-search"></i></span>
+									</div>
+									<input type="text" class="form-control"
+										placeholder="Tìm kiếm sản phẩm" name="productName">
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="cart-block cart-hover-div " onclick="openCart()">
+						<div class="cart ">
+							<span class="cart-product" id="cartItem">0</span>
+							<ul>
+								<li class="mobile-cart  "><a href="#cart_side"> <i
+										class="icon-shopping-cart "></i>
+								</a></li>
+							</ul>
+						</div>
+						<div class="cart-item">
+							<h5>Giỏ</h5>
+							<h5>Hàng</h5>
+						</div>
+					</div>
+					<div class="menu-nav">
+						<span class="toggle-nav"> <i class="fa fa-bars "></i>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="category-header-2">
+		<div class="custom-container">
+			<div class="row">
+				<div class="col">
+					<div class="navbar-menu">
+						<div class="category-left">
+							<div class="nav-block">
+								<div class="nav-left" style="width: 350px;">
+									<nav class="navbar" data-toggle="collapse"
+										data-target="#navbarToggleExternalContent">
+										<button class="navbar-toggler" type="button">
+											<span class="navbar-icon"><i class="fa fa-arrow-down"></i></span>
+										</button>
+										<h5 class="mb-0  text-white title-font">Thể Loại Sản Phẩm</h5>
+									</nav>
+									<div class="collapse  nav-desk"
+										id="navbarToggleExternalContent">
+										<ul class="nav-cat title-font">
+											<li th:each="category : ${categories}"><img
+												th:src="@{|/category/image?id=${category.id}|}"
+												alt="category-product" height="80px" width="80px"> <a
+												th:href="@{/product-list?categoryId={code}(code=${category.id})}"
+												th:utext="${category.categoryName}" style="font-size: 18px;">western
+													ware</a></li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="menu-block">
+								<nav id="main-nav" style="padding-left: 250px;">
+									<div class="toggle-nav">
+										<i class="fa fa-bars sidebar-bar"></i>
+									</div>
+									<ul id="main-menu" class="sm pixelstrap sm-horizontal">
+										<li>
+											<div class="mobile-back text-right">
+												Back<i class="fa fa-angle-right pl-2" aria-hidden="true"></i>
+											</div>
+										</li>
+										<!--HOME-->
+										<li><a href="/" class="dark-menu-item">Trang Chủ</a></li>
+										<!--HOME-END-->
+
+										<!--product-meu start-->
+										<li class="mega"><a href="#" class="dark-menu-item">Sản
+												Phẩm</a>
+											<ul class="mega-menu full-mega-menu ">
+												<li>
+													<div class="container">
+														<div class="row">
+															<div class="col mega-box">
+																<div class="link-section">
+																	<div class="menu-title"
+																		th:each="category : ${categories}"
+																		th:if="${category.id == 1}">
+																		<a
+																			th:href="@{/product-list?categoryId={code}(code=${category.id})}">
+																			<h5 th:utext="${category.categoryName}">Điện
+																				thoại</h5>
+																		</a>
+																	</div>
+																	<div class="menu-content">
+																		<ul>
+																			<li th:each="brand : ${brands}"
+																				th:if="${brand.categoriesId.id == 1}"><a
+																				th:href="@{/product-list?brandId={code}(code=${brand.id})}"
+																				th:utext="${brand.brandName}">Apple</a></li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<div class="col mega-box">
+																<div class="link-section">
+																	<div class="menu-title"
+																		th:each="category : ${categories}"
+																		th:if="${category.id == 2}">
+																		<a
+																			th:href="@{/product-list?categoryId={code}(code=${category.id})}">
+																			<h5 th:utext="${category.categoryName}">Laptop</h5>
+																		</a>
+																	</div>
+																	<div class="menu-content">
+																		<ul>
+																			<li th:each="brand : ${brands}"
+																				th:if="${brand.categoriesId.id == 2}"><a
+																				th:href="@{/product-list?brandId={code}(code=${brand.id})}"
+																				th:utext="${brand.brandName}">Macbook</a></li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<div class="col mega-box">
+																<div class="link-section">
+																	<div class="menu-title"
+																		th:each="category : ${categories}"
+																		th:if="${category.id == 3}">
+																		<a
+																			th:href="@{/product-list?categoryId={code}(code=${category.id})}">
+																			<h5 th:utext="${category.categoryName}">Tivi</h5>
+																		</a>
+																	</div>
+																	<div class="menu-content">
+																		<ul>
+																			<li th:each="brand : ${brands}"
+																				th:if="${brand.categoriesId.id == 3}"><a
+																				th:href="@{/product-list?brandId={code}(code=${brand.id})}"
+																				th:utext="${brand.brandName}">LG</a></li>
+
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<div class="col mega-box">
+																<div class="link-section">
+																	<div class="menu-title"
+																		th:each="category : ${categories}"
+																		th:if="${category.id == 4}">
+																		<a
+																			th:href="@{/product-list?categoryId={code}(code=${category.id})}">
+																			<h5 th:utext="${category.categoryName}">Phụ kiện
+																				điện tử</h5>
+																		</a>
+																	</div>
+																	<div class="menu-content">
+																		<ul>
+																			<li th:each="brand : ${brands}"
+																				th:if="${brand.categoriesId.id == 4}"><a
+																				th:href="@{/product-list?brandId={code}(code=${brand.id})}"
+																				th:utext="${brand.brandName}">Loa</a></li>
+
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<div class="col mega-box">
+																<div class="link-section">
+																	<div class="menu-title"
+																		th:each="category : ${categories}"
+																		th:if="${category.id == 5}">
+																		<a
+																			th:href="@{/product-list?categoryId={code}(code=${category.id})}">
+																			<h5 th:utext="${category.categoryName}">Quần áo</h5>
+																		</a>
+																	</div>
+																	<div class="menu-content">
+																		<ul>
+																			<li th:each="brand : ${brands}"
+																				th:if="${brand.categoriesId.id == 5}"><a
+																				th:href="@{/product-list?brandId={code}(code=${brand.id})}"
+																				th:utext="${brand.brandName}">Aristion</a></li>
+
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<div class="col mega-box">
+																<div class="link-section">
+																	<div class="menu-title"
+																		th:each="category : ${categories}"
+																		th:if="${category.id == 6}">
+																		<a
+																			th:href="@{/product-list?categoryId={code}(code=${category.id})}">
+																			<h5 th:utext="${category.categoryName}">Sản phẩm
+																				mới</h5>
+																		</a>
+																	</div>
+																	<div class="menu-content">
+																		<ul>
+																			<li th:each="brand : ${brands}"
+																				th:if="${brand.categoriesId.id == 6}"><a
+																				th:href="@{/product-list?brandId={code}(code=${brand.id})}"
+																				th:utext="${brand.brandName}">Điện thoại</a></li>
+
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="row menu-banner">
+															<div class="col-lg-6">
+																<div>
+																	<img th:src="@{../assets/images/menu-banner1.jpg}"
+																		alt="menu-banner" class="img-fluid">
+																</div>
+															</div>
+															<div class="col-lg-6">
+																<div>
+																	<img th:src="@{../assets/images/menu-banner2.jpg}"
+																		alt="menu-banner" class="img-fluid">
+																</div>
+															</div>
+														</div>
+													</div>
+												</li>
+											</ul></li>
+										<!--product-meu end-->
+
+
+										<!--pages-meu start-->
+										<li><a href="#" class="dark-menu-item">Tiện Ích</a>
+											<ul>
+												<li sec:authorize="!isAuthenticated()"><a
+													th:href="@{/usr/login}">Đăng Nhập</a></li>
+												<li><a th:href="@{/usr/register}">Đăng Ký</a></li>
+												<li><a th:href="@{/user/shoppingCart}">Giỏ Hàng</a></li>
+												<li><a th:href="@{/user/order-history}">Lịch Sử Đặt
+														Hàng</a></li>
+												<li><a th:href="@{/user/wishList}">Yêu Thích Sản
+														Phẩm</a></li>
+												<li><a th:href="@{/frontend/contact}">Liên Hệ</a></li>
+
+											</ul></li>
+										<!--product-end end-->
+										<li><a th:href="@{/usr/register}" class="dark-menu-item">Đăng Ký</a></li>
+										<li><a th:href="@{/user/shoppingCart}" class="dark-menu-item">Giỏ Hàng</a></li>
+									</ul>
+								</nav>
+							</div>
+							<div class="icon-block" style="display: flex;padding: 10px !important;">
+								<ul>
+									<!-- th:href="@{/usr/login}" -->
+									<li class="mobile-wishlist"><a
+										th:href="@{/user/wishList}"><i class="icon-heart" style="margin-left: 120px"></i> <!-- onclick="openWishlist()"-->
+											<div class="cart-item">
+												<div id="wishCount">
+													0 Sản Phẩm<span>Yêu Thích</span>
+												</div>
+											</div> </a></li>
+									<li class="mobile-search"><a href="#"><i
+											class="icon-search"></i></a>
+										<div class="search-overlay">
+											<div>
+												<span class="close-mobile-search">×</span>
+												<div class="overlay-content">
+													<div class="container">
+														<div class="row">
+															<div class="col-xl-12">
+																<form action="/product-list" id="searchForm">
+																	<div class="form-group">
+																		<input type="text" class="form-control"
+																			id="exampleInputPassword1"
+																			placeholder="Search a Product" name="productName">
+																	</div>
+																	<button type="submit" class="btn btn-primary"
+																		onclick="$('#searchForm').submit()">
+																		<i class="fa fa-search"></i>
+																	</button>
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div></li>
+
+
+									
+									<li class="mobile-user onhover-dropdown"
+										onclick="openAccount()" sec:authorize="!isAuthenticated()" style="margin-left: 12px"><a><i
+											class="icon-user"></i> </a></li>
+
+									<li class="mobile-user onhover-dropdown"
+										sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><i
+											class="fa fa-sign-out"></i></a></li>
+									
+
+
+									<!-- onclick="openSetting()" -->
+									<li class="mobile-setting mobile-setting-hover"
+										onclick="openSetting()"><a><i class="icon-settings"></i></a></li>
+
+
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!--header end-->

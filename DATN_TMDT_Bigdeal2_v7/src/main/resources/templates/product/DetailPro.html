@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-nav}  
+                                               )}">
+
+
+
+<head>
+
+</head>
+
+<body>
+	<div id="home-nav"
+		th:replace="~{/fragments/app-fragments :: nav-default}">Home Nav
+	</div>
+	
+			<div id="home-main-content">
+				<!-- Container-fluid starts-->
+				<div class="container-fluid">
+					<div class="page-header">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="page-header-left">
+									<h3>
+										Chi Tiết sản Phẩm
+										<!-- <small>Bigdeal Admin panel</small> -->
+									</h3>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<ol class="breadcrumb pull-right">
+									<li class="breadcrumb-item"><a href="index.html"><i
+											data-feather="home"></i></a></li>
+									<li class="breadcrumb-item">Chi tiáº¿t</li>
+									<li class="breadcrumb-item active" th:utext="#{menu.product}">Danh
+										SÃ¡ch San</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Container-fluid Ends-->
+
+				<!-- Container-fluid starts-->
+				<div class="container-fluid">
+					<div class="card">
+						<div class="row product-page-main card-body">
+							<div class="col-xl-4">
+								<div class="product-slider owl-carousel owl-theme" id="sync1">
+
+									<div class="item">
+										<img th:src="@{|/productImage?code=${product_code}|}" alt=""
+											class="blur-up lazyloaded">
+									</div>
+									<div class="item">
+										<img th:src="@{|/productImage2?code=${product_code}|}" alt=""
+											class="blur-up lazyloaded">
+									</div>
+									<div class="item">
+										<img th:src="@{|/productImage3?code=${product_code}|}" alt=""
+											class="blur-up lazyloaded">
+									</div>
+									<div class="item">
+										<img th:src=" " alt=""
+											class="blur-up lazyloaded">
+									</div>
+
+								</div>
+								<div class="owl-carousel owl-theme" id="sync2">
+
+									<div class="item">
+										<img th:src="@{|/productImage?code=${product_code}|}" alt=""
+											class="blur-up lazyloaded">
+									</div>
+									<div class="item">
+										<img th:src="@{|/productImage2?code=${product_code}|}" alt=""
+											class="blur-up lazyloaded">
+									</div>
+									<div class="item">
+										<img th:src="@{|/productImage3?code=${product_code}|}" alt=""
+											class="blur-up lazyloaded">
+									</div>
+									<div class="item">
+										<img th:src="@{|/productImage4?code=${product_code}|}" alt=""
+											class="blur-up lazyloaded">
+									</div>
+
+								</div>
+							</div>
+							<div class="col-xl-8">
+								<div class="product-page-details product-right mb-0">
+									<h2 th:utext="${product_name}">WOMEN PINK SHIRT</h2>
+									<select id="u-rating-fontawesome-o" name="rating"
+										data-current-rating="5" autocomplete="off">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+									<hr>
+									<h6 class="product-title">Mô Tả Ngắn</h6>
+									<p th:utext="${product_shortdiscription}">ipsam voluptatem,</p>
+									<!-- Giá có discount-->
+									<div lass="price" th:if="${product_discount} > 0">
+
+
+										<h3 lass="price">
+											<i th:utext="${product_price}*(1-(${product_discount}/100))"></i>
+											VNĐ &nbsp;&nbsp;
+											<del>
+												<i th:utext="${product_price}"></i>VNĐ
+											</del>
+										</h3>
+									</div>
+									<!-- không có có discount  -->
+									<div lass="price" th:if="${product_discount} == 0">
+										<h3 lass="price" th:utext="${product_price}"></h3>
+										<h3>VNĐ</h3>
+									</div>
+
+									<div class="modal fade" id="sizemodal" tabindex="-1"
+										role="dialog" aria-labelledby="exampleModalLabel"
+										aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered"
+											role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Sheer
+														Straight Kurta</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<img th:src="@{../assets/images/size-chart.jpg}" alt=""
+														class="img-fluid blur-up lazyloaded">
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="add-product-form">
+										<h6 class="product-title">quantity</h6>
+										<fieldset class="qty-box mt-2 ml-0">
+											<div class="input-group">
+												<input class="touchspin" type="text" value="1">
+											</div>
+										</fieldset>
+									</div>
+									<hr>
+									<h6 class="product-title">Time Reminder</h6>
+									<div class="timer">
+										<p id="demo">
+											<span>25 <span class="padding-l">:</span> <span
+												class="timer-cal">Days</span>
+											</span><span>22 <span class="padding-l">:</span> <span
+												class="timer-cal">Hrs</span>
+											</span><span>13 <span class="padding-l">:</span> <span
+												class="timer-cal">Min</span>
+											</span><span>57 <span class="timer-cal">Sec</span></span>
+										</p>
+									</div>
+									<div class="m-t-15">
+										<button class="btn btn-primary m-r-10" type="button">Add
+											To Cart</button>
+										<button class="btn btn-secondary" type="button">Buy
+											Now</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Container-fluid Ends-->
+
+			</div>
+
+	<!-- Container-fluid Ends-->
+
+
+
+
+</body>
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Sep 2020 08:01:49 GMT -->
+
+</html>

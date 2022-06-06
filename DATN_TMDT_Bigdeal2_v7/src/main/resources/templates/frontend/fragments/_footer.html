@@ -1,0 +1,249 @@
+<!--footer start-->
+<footer class="footer-2">
+	<div class="container ">
+		<div class="row">
+			<div class="col-12">
+				<div class="footer-main-contian">
+					<div class="row ">
+						<div class="col-lg-4 col-md-12 ">
+							<div class="footer-left">
+								<div class="footer-logo">
+									<img th:src="@{/frontend/images/layout-2/logo/logo3.jpg}"
+										class="img-fluid  " alt="logo">
+								</div>
+								<div class="footer-detail">
+									<p>
+										Chuyên cung cấp và sỉ lẻ các mặt hàng hot nhất hiện nay,
+										chương trình khuyến mãi vào các ngày cuối tuần và các dịp lễ
+										diễn ra thường xuyên. <br> Nhiều deal khủng chỉ có tại
+										TTQDN, cùng các dịch vụ và chính sách quy định tốt nhất dành
+										cho khách hàng. <br> Chào mừng bạn đến với thế giới mua
+										sắm online tiện lợi - nhanh chóng và an toàn. <br> Cảm ơn
+										bạn đã lựa chọn TTQDN.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-8 col-md-12 ">
+							<div class="footer-right">
+								<div class="row">
+
+									<div class="col-md-12">
+										<div class=account-right>
+											<div class="row">
+												<div class="col-md-4">
+													<div class="footer-box">
+														<div class="footer-title">
+															<h5>Tài Khoản</h5>
+														</div>
+														<div class="footer-contant">
+															<ul>
+																<li><a href="#">Liên Hệ</a></li>
+																<li><a href="#">Đăng Nhập</a></li>
+																<li><a href="#">Đăng Ký</a></li>
+																<li><a href="#"></a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="footer-box">
+														<div class="footer-title">
+															<h5>quick link</h5>
+														</div>
+														<div class="footer-contant">
+															<ul>
+																<li><a href="#">Giỏ Hàng</a></li>
+																<li><a href="#">Yêu Thích Sản Phẩm</a></li>
+																<li><a href="#">Lịch Sử Đặt Hàng</a></li>
+																<li><a href="#"> size guide</a></li>
+																<li><a href="#">FAQ </a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-5">
+													<div class="footer-box footer-contact-box">
+														<div class="footer-title">
+															<h5>contact us</h5>
+														</div>
+														<div class="footer-contant">
+															<ul class="contact-list">
+																<li><i class="fa fa-map-marker"></i><span>Cửa Hàng TTQDN <br> <span>
+																			Việt Nam-Cần Thơ</span>
+																</span></li>
+																<li><i class="fa fa-phone"></i><span>
+																		ĐT: 034-701-0445</span></li>
+																<li><i class="fa fa-envelope-o"></i><span>email
+																		: Namhtpc00409@gmail.com</span></li>																
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="sub-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="sub-footer-contain">
+						<p>
+							<span>2018 - 19 </span>copy right by themeforest powered by pixel
+							strap
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!--footer end-->
+
+
+
+<div id="fb-root"></div>
+<script th:src="@{/frontend/js/jquery-3.3.1.min.js}"></script>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml: true,
+            version: 'v8.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id))
+            return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script>
+    $(function() {
+        // thêm sản phẩm yêu thích
+        console.log("ready!");
+        $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            url: "/getWish",
+            data: JSON.stringify(""),
+            dataType: 'json',
+            cache: false,
+            timeout: 600000,
+            success: function(data) {
+                $('#wishCount').html(data + " Sản Phẩm");
+
+
+                console.log("WISH SUCCESS : ", data);
+
+
+            },
+            error: function(e) {
+
+                var json = "<h4>Ajax Response</h4>&lt;pre&gt;" +
+                    e.responseText + "&lt;/pre&gt;";
+                $('#feedback').html(json);
+
+                console.log("ERROR : ", e);
+                $("#btn-search").prop("disabled", false);
+
+            }
+        });
+
+        // thêm sản phẩm giỏ hàng
+        $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            url: "/getCart",
+            data: JSON.stringify(""),
+            dataType: 'json',
+            cache: false,
+            timeout: 600000,
+            success: function(data) {
+                $('#cartItem').html(data);
+
+               /*  window.location.reload(); */
+                console.log("CART SUCCESS : ", data);
+
+
+            },
+            error: function(e) {
+
+                var json = "<h4>Ajax Response</h4>&lt;pre&gt;" +
+                    e.responseText + "&lt;/pre&gt;";
+                $('#feedback').html(json);
+
+                console.log("ERROR : ", e);
+                $("#btn-search").prop("disabled", false);
+
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            url: "/getCartList",
+            data: JSON.stringify(""),
+            dataType: 'json',
+            cache: false,
+            timeout: 600000,
+            success: function(data) {
+                console.log("getCartList SUCCESS : ", data);
+                $(".cart_product.cart_product").html('');
+                for (const value of data) {
+                    console.log(value);
+                    var liStr = "<li>";
+                    liStr += "		<div class='media'>";
+                    liStr += "			<a href='#'>";
+                    liStr += "				<img src='/productImage?code=" + value.productInfo.code +
+                        "' class='mr-3' alt=''>";
+                    liStr += "			</a>";
+                    liStr += "			<div class='media-body'>";
+                    liStr += "				<a href='#'> <h4>" + value.productInfo.name + "</h4>";
+                    liStr += "				</a>";
+                    liStr += "				<h4><span> " + value.quantity + " x  " + value.productInfo.price
+                        .toLocaleString('en-US', {
+                            style: 'currency',
+                            currency: 'VND'
+                        }) + " </span></h4>";
+                    liStr += "			</div>";
+                    liStr += "		</div>";
+                    liStr += "		<div class='close-circle'>";
+                    liStr += "			</a>";
+                    liStr += "		</div>";
+                    liStr += "</li>";
+                    $(".cart_product.cart_product").append(liStr);
+                }
+
+            },
+            error: function(e) {
+
+                var json = "<h4>Ajax Response</h4>&lt;pre&gt;" +
+                    e.responseText + "&lt;/pre&gt;";
+                $('#feedback').html(json);
+
+                console.log("getCartList ERROR : ", e);
+                $("#btn-search").prop("disabled", false);
+
+            }
+        });
+
+    });
+</script>
+<!-- Your Chat Plugin code -->
+<div class="fb-customerchat" attribution=setup_tool
+	page_id="115892203495796"></div>

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Class-Path: 
+Chỉnh sữa:
+P.Duy (sữa ngày 09-01-2020)
+  - Chức năng sữa account : thêm trường active, thêm hình ảnh 
+  - chức năng thêm account thêm trường avatar
+  - load avatar lên trang chủ admin
+  - thêm chức năng foget password
+  - thêm 2 trường cho tạo mật khẩu
+   	 + thêm confim password và email
+   	
+   - thêm vào 1 product-list-demo 
+  
+

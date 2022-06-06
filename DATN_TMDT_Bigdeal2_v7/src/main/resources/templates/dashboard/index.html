@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{:: #home-static-resources},
+                                                ~{:: #home-main-content},
+                                                ~{:: #home-nav}  
+                                               )}">
+
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Sep 2020 08:00:24 GMT -->
+<head>
+
+</head>
+
+<body>
+	<div id="home-nav"
+		th:replace="~{/fragments/app-fragments :: nav-default}">Home Nav
+	</div>
+	<div id="home-main-content">
+		<!-- Container-fluid starts-->
+            <div class="container-fluid">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="page-header-left">
+                                <h3>Trang quản trị
+                                    <small>Bảng điều khiển quản trị Bigdeal</small>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <ol class="breadcrumb pull-right">
+                                <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                                <li class="breadcrumb-item active">Trang quản trị</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Container-fluid Ends-->
+
+            <!-- Container-fluid starts-->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden  widget-cards">
+                            <div class="bg-secondary card-body">
+                                <div class="media static-top-widget">
+                                    <div class="media-body"><span class="m-0" th:utext="#{menu.product}">Products</span>
+                                        <h3 class="mb-0">$ <span class="counter" th:utext="${CuontProducts}">9856</span><small> This Month</small></h3>
+                                    </div>
+                                    <div class="icons-widgets">
+                                        <i data-feather="box"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-primary card-body">
+                                <div class="media static-top-widget">
+                                    <div class="media-body"><span class="m-0" th:utext="#{menu.order}">Messages</span>
+                                        <h3 class="mb-0">$ <span class="counter" th:utext="${paginationResult.totalRecords}">893</span><small> This Month</small></h3>
+                                    </div>
+                                    <div class="icons-widgets">
+                                        <i data-feather="message-square"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-warning card-body">
+                                <div class="media static-top-widget">
+                                    <div class="media-body"><span class="m-0">Số Lượng bán:</span>
+                                        <h3 class="mb-0">$ <span class="counter"  th:utext="${Cuontoder}">6659</span><small> This Month</small></h3>
+                                    </div>
+                                    <div class="icons-widgets">
+                                        <i data-feather="navigation"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-success card-body">
+                                <div class="media static-top-widget">
+                                    <div class="media-body"><span class="m-0">Số Lượng Tồn</span>
+                                        <h3 class="mb-0">$ <span class="counter" th:utext="${Cuonton}">45631</span><small> This Month</small></h3>
+                                    </div>
+                                    <div class="icons-widgets">
+                                        <i data-feather="users"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <center><img class="blur-up lazyloaded" th:src="@{/assets/logo4.jpg}" alt="" style="width: 25%" ></center>
+                    
+
+	</div>
+
+</body>
+
+<!-- Mirrored from themes.pixelstrap.com/bigdeal/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Sep 2020 08:01:49 GMT -->
+</html>
+
